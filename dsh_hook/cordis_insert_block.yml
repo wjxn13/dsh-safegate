@@ -1,0 +1,23 @@
+
+# ══════════════════════════════════════════════════════════════════
+# 工具调用风险门控（dsh-safegate）
+#
+#   作用：bash / powershell / edit / write / cordis_run 在执行**之前**
+#         先过一遍风险规则。正常操作直接放行（无感）；有风险的操作弹窗问一次。
+#
+#   判定规则：<仓库根>/real_policy.py        ← 规则只在这一处
+#   适配层：  <仓库根>/dsh_hook/gate_hook.py
+#   配置：    <仓库根>/dsh_hook/hooks.json   ← 由 install.py 从 .template 生成
+#   自测：    python dsh_hook/gate_hook.py --selftest
+#
+#   为什么解释器写系统 python 而不是宿主自带的带版本号路径：
+#   带版本号的路径升级后会变（node / python 都踩过：目录名 22.22.2-2 → -3），
+#   **变了不报错、只是静默起不来**。系统路径不含版本号，不会随升级失效。
+#
+#   卸载：删掉下面这个 insert 块，重启 dsh。
+# ══════════════════════════════════════════════════════════════════
+- insert:
+    - id: dsh-gate-hook
+      name: "@deepseek-ai/dsh-hooks-claude-code"
+      config:
+        configPath: __REPO__/dsh_hook/hooks.json

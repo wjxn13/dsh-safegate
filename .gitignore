@@ -1,0 +1,49 @@
+# ── 本机生成的配置：含绝对路径，每人一份，不入库 ──────────────
+dsh_hook/hooks.json
+*.bak*
+*.orig
+
+# ── Python ────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+
+# ── 密钥 / 凭据：永不入库 ──────────────────────────────────────
+.sf_key
+*.key
+*.pem
+.env
+.env.*
+
+# ── 运行期痕迹 ─────────────────────────────────────────────────
+*.jsonl
+*.log
+
+# ── 离线回放 / 实验产物 ────────────────────────────────────────
+# ⚠️ 影子回放里存的是**原样工具调用**，含真实用户消息与本机路径，
+#    体积大且带隐私。本仓库只发布插件核心，这些一律不入库。
+results/
+shadow_*.jsonl
+bench_*.py
+calibrate_*.py
+eval_*.py
+run_*.py
+analyze_*.py
+annotate_*.py
+audit_*.py
+compare_*.py
+probe_*.py
+replay_*.py
+review_*.py
+regress_*.py
+summarize_*.py
+verify_*.py
+ctx_auth_experiment.py
+shadow_semif.py
+
+# ── 编辑器 / 系统 ──────────────────────────────────────────────
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

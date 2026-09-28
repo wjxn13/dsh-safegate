@@ -1,0 +1,36 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "bash|pwsh",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "& \"__PYTHON__\" -S \"__REPO__/dsh_hook/gate_hook.py\"",
+            "timeout": 10
+          }
+        ]
+      },
+      {
+        "matcher": "edit|write|str_replace_editor",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "& \"__PYTHON__\" -S \"__REPO__/dsh_hook/gate_hook.py\"",
+            "timeout": 10
+          }
+        ]
+      },
+      {
+        "matcher": "cordis_run",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "& \"__PYTHON__\" -S \"__REPO__/dsh_hook/gate_hook.py\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}
